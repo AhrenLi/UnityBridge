@@ -12,6 +12,7 @@ namespace UnityBridge
 {
     public partial class UnityBridge : ServiceBase
     {
+        UDPBridge udp;
         public UnityBridge()
         {
             InitializeComponent();
@@ -19,18 +20,14 @@ namespace UnityBridge
 
         protected override void OnStart(string[] args)
         {
-            using (StreamWriter sw = new StreamWriter("c://log.txt", true))
-            {
-                sw.WriteLine(DateTime.Now.ToString() + "  On Start ");
-            }
+             udp = new UDPBridge();
+            udp.OnReceiveMsg();
         }
 
         protected override void OnStop()
         {
-            using (StreamWriter sw = new StreamWriter("c://log.txt", true))
-            {
-                sw.WriteLine(DateTime.Now.ToString() + "  On Stop ");
-            }
+            udp.Close();
+            Forward.Instance.CloseForward();
         }
     }
 }

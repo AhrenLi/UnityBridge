@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <Application>
+    <Multicast>
+      <IP>239.52.52.52</IP>
+      <Port>23952</Port>
+    </Multicast>
+  </Application>
+
+
+</config>
